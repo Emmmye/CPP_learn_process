@@ -35,20 +35,35 @@
 //}
 
 //引用
+// #include<iostream>
+// using namespace std;
+// int & FF( int i)
+// {
+//     cout<<i<<endl;
+//     i++;
+//     static int c = i;
+//     return c;
+// }
+// 
+// int main()
+// {
+//     int i = 1;
+//     int &a = FF(i);
+//     cout<<a<<endl;
+//     return 0;
+// }
+
+//缺省参数
 #include<iostream>
 using namespace std;
-int & FF( int i)
+
+void FF(int i ,int j = 1)
 {
-    cout<<i<<endl;
-    i++;
-    static int c = i;
-    return c;
+    cout<<i+j<<endl;
 }
 
 int main()
 {
-    int i = 1;
-    int &a = FF(i);
-    cout<<a<<endl;
+    FF(2);
     return 0;
 }
