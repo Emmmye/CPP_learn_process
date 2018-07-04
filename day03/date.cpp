@@ -31,28 +31,28 @@ public:
 
     //运算符重载函数
     //  < 
-    bool operator<(const Date& d)//因为类成员函数都有一个隐含的this指针
-    {
-        if(_year < d._year)
-        {
-            return true;
-        }
-        else if(_year == d._year)
-        {
-            if(_month < d._month)
-            {
-                return true;
-            }
-            else if(_month == d._month)
-            {
-                if(_day < d._day)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+//     bool operator<(const Date& d)//因为类成员函数都有一个隐含的this指针
+//     {
+//         if(_year < d._year)
+//         {
+//             return true;
+//         }
+//         else if(_year == d._year)
+//         {
+//             if(_month < d._month)
+//             {
+//                 return true;
+//             }
+//             else if(_month == d._month)
+//             {
+//                 if(_day < d._day)
+//                 {
+//                     return true;
+//                 }
+//             }
+//         }
+//         return false;
+//     }
     //  >
     bool operator>(const Date& d)
     {
@@ -77,57 +77,71 @@ public:
         return false;
     }
     // <=
-    bool operator<=(const Date& d)
-    {
-        if(_year < d._year)
-        {
-            return true;
-        }
-        else if(_year == d._year)
-        {
-            if(_month < d._month)
-            {
-                return true;
-            }
-            else if(_month == d._month)
-            {
-                if(_day < d._day)
-                {
-                    return true;
-                }else if(_day == d._day)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+//    bool operator<=(const Date& d)
+//    {
+//        if(_year < d._year)
+//        {
+//            return true;
+//        }
+//        else if(_year == d._year)
+//        {
+//            if(_month < d._month)
+//            {
+//                return true;
+//            }
+//            else if(_month == d._month)
+//            {
+//                if(_day < d._day)
+//                {
+//                    return true;
+//                }else if(_day == d._day)
+//                {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
     //  >=
     bool operator>=(const Date& d)
     {
-        if(_year > d._year)
-        {
-            return true;
-        }
-        else if(_year == d._year)
-        {
-            if(_month > d._month)
-            {
-                return true;
-            }
-            else if(_month == d._month)
-            {
-                if(_day > d._day)
-                {
-                    return true;
-                }else if(_day == d._day)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return (*this > d ) || (*this == d);
     }
+    // <
+    bool operator<(const Date& d)
+    {
+        return !(*this >= d);
+    }
+    // <=
+    bool operator<=(const Date& d)
+    {
+        return !(*this > d);
+    }
+//     bool operator>=(const Date& d)
+//     {
+//         if(_year > d._year)
+//         {
+//             return true;
+//         }
+//         else if(_year == d._year)
+//         {
+//             if(_month > d._month)
+//             {
+//                 return true;
+//             }
+//             else if(_month == d._month)
+//             {
+//                 if(_day > d._day)
+//                 {
+//                     return true;
+//                 }else if(_day == d._day)
+//                 {
+//                     return true;
+//                 }
+//             }
+//         }
+//         return false;
+//     }
     // ==
     bool operator==(const Date& d)
     {
@@ -138,9 +152,7 @@ public:
     // !=
     bool operator!=(const Date& d)
     {
-        if(_year == d._year && _month == d._month && _day == d._day)
-            return false;
-        return true;
+        return !(*this == d);
     }
     //  -(两个日期相减,得到一个天数)
     int operator -(const Date& d2)
@@ -192,49 +204,42 @@ public:
         }
         return sum;
     }
-    // + (加上一个天数，得到一个新的日期)
-    void operator +(const int day)
+    // += (加上一个天数，得到一个新的日期，并赋给调用者)
+    Date operator +=(const int day)
     {
         if(day == 0)
         {
-            return;
+            return *this;
         }else if(day < 0)
         {
-            *this - (-day);
+            *this -= (-day);
         }
         _day += day;//先把天数全加到_day上，然后向月份，年份依次进位
         while(1)
         {
-            int monthday[13] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
-            if((_year % 4 == 0 && _year % 100 != 0 )|| _year % 400 == 0)
-            {
-                monthday[2] += 1;
-            }
-            if(_month > 0 && _month < 13 && _day > 0 && _day < monthday[_month])
+            if(_day < GetMonthDay(_year,_month))
             {
                 break;
             }
             if(_month == 12)
             {
-                _day -= monthday[12];
+                _day -= GetMonthDay(_year,12);
                 _month = 1;
                 _year += 1;
             }else
             {
-                _day -= monthday[_month];
+                _day -= GetMonthDay(_year,_month);
                 _month += 1;
             }
         }
+        return *this;
     }
-    // - (减上一个天数，得到一个新的日期)
-    void operator -(const int day)
+    // -= (减上一个天数，得到一个新的日期,并赋给调用者)
+    Date operator -=(const int day)
     {
-        if(day == 0)
+        if(day < 0)
         {
-            return;
-        }else if(day < 0)
-        {
-            *this + -day;
+            *this += -day;
         }
         while(_day < day)
         {
@@ -250,7 +255,45 @@ public:
             }
         }
         _day -= day;
-        return;
+        return *this;
+    }
+    //  - 减上一个天数，得到一个日期，但是不能修改原来的值
+    Date operator -(const int day)
+    {
+        Date ret(*this);
+        ret -= day;
+        return ret;
+    }
+    //  + 加上一个天数，得到一个日期，但是不能修改原来的值
+    Date operator +(const int day)
+    {
+        Date ret(*this);
+        ret += day;
+        return ret;
+    }
+    // ++ 
+    Date operator++()//前置
+    {
+        *this += 1;
+        return *this;
+    }
+    Date operator++(int)//后置
+    {
+        Date ret(*this);
+        *this += 1;
+        return ret;
+    }
+    // -- 
+    Date operator --()//前置
+    {
+        *this -= 1;
+        return *this;
+    }
+    Date operator --(int)//后置
+    {
+        Date ret(*this);
+        *this -= 1;
+        return ret;
     }
     // = 赋值运算符重载
     void operator=(const Date& d)
@@ -281,11 +324,10 @@ private:
 
 int main()
 {
-    Date _p1(2019,7,4);
-    _p1.show();
-    Date _p2(2018,7,4);
+    Date _p1;
+    Date _p2(2018,5,3);
     _p2.show();
-     _p1 = _p2;
+     _p1 = _p2 + 1;
     _p1.show();
     return 0;
 }
