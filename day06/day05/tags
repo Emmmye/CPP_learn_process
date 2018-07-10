@@ -1,0 +1,52 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Append	String.h	/^	void Append(const char* str)$/;"	f	class:String
+Capacity	String.h	/^	size_t Capacity()$/;"	f	class:String
+Capacity	myString.h	/^    size_t Capacity()$/;"	f	class:MyString
+Empty	String.h	/^	bool Empty()$/;"	f	class:String
+Empty	myString.h	/^    bool Empty()$/;"	f	class:MyString
+Expand	String.h	/^	void Expand(size_t n)$/;"	f	class:String
+Expand	myString.h	/^    void Expand(size_t n)$/;"	f	class:MyString
+Find	myString.h	/^    size_t Find(const char ch)$/;"	f	class:MyString
+Find	myString.h	/^    size_t Find(const char* str)$/;"	f	class:MyString
+Insert	String.h	/^	void Insert(size_t pos, char ch)$/;"	f	class:String
+Insert	myString.h	/^    MyString& Insert(size_t pos, const char ch)$/;"	f	class:MyString
+MyString	myString.h	/^    MyString(const MyString& s)$/;"	f	class:MyString
+MyString	myString.h	/^    MyString(const char* str = "")$/;"	f	class:MyString
+MyString	myString.h	/^class MyString{$/;"	c
+PushBack	String.h	/^	void PushBack(char ch)$/;"	f	class:String
+PushBack	myString.h	/^    MyString& PushBack(const char ch)$/;"	f	class:MyString
+Reserve	String.h	/^	void Reserve(size_t n)$/;"	f	class:String
+Size	String.h	/^	size_t Size()$/;"	f	class:String
+Size	myString.h	/^    size_t Size()$/;"	f	class:MyString
+String	String.h	/^	String(const String& s)$/;"	f	class:String
+String	String.h	/^	String(const char* str = "")$/;"	f	class:String
+String	String.h	/^class String$/;"	c
+Swap	String.h	/^	void Swap(String& s)$/;"	f	class:String
+Swap	myString.h	/^    void Swap(MyString s)$/;"	f	class:MyString
+Test	myString.cpp	/^void Test()$/;"	f
+TestString1	String.h	/^void TestString1()$/;"	f
+TestString2	String.h	/^void TestString2()$/;"	f
+_capacity	String.h	/^	size_t _capacity;$/;"	m	class:String
+_capacity	myString.h	/^    size_t _capacity;$/;"	m	class:MyString
+_size	String.h	/^	size_t _size;$/;"	m	class:String
+_size	myString.h	/^    size_t _size;$/;"	m	class:MyString
+_str	String.h	/^	char* _str;$/;"	m	class:String
+_str	myString.h	/^    char* _str;$/;"	m	class:MyString
+c_str	String.h	/^	char* c_str()$/;"	f	class:String
+c_str	myString.h	/^    char* c_str()$/;"	f	class:MyString
+main	myString.cpp	/^int main()$/;"	f
+operator +	String.h	/^	String operator+(const String s)$/;"	f	class:String
+operator +	String.h	/^	String operator+(const char* str)$/;"	f	class:String
+operator +=	String.h	/^	String operator+=(const String& s)$/;"	f	class:String
+operator +=	String.h	/^	String& operator+=(const char* str)$/;"	f	class:String
+operator =	String.h	/^	String& operator=(String s)$/;"	f	class:String
+operator =	myString.h	/^    MyString& operator=(const MyString& s)$/;"	f	class:MyString
+operator []	String.h	/^	char& operator[](size_t pos)$/;"	f	class:String
+operator []	myString.h	/^    char& operator[](size_t pos)$/;"	f	class:MyString
+~MyString	myString.h	/^    ~MyString()$/;"	f	class:MyString
+~String	String.h	/^	~String()$/;"	f	class:String
