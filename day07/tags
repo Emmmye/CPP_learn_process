@@ -1,0 +1,23 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Capacity	Vector.h	/^    size_t Capacity() const{$/;"	f	class:Vector
+Expand	Vector.h	/^    void Expand(size_t n)$/;"	f	class:Vector
+PushBack	Vector.h	/^    void PushBack(VectType cur)$/;"	f	class:Vector
+Size	Vector.h	/^    size_t Size() const{$/;"	f	class:Vector
+Swap	Vector.h	/^    void Swap(Vector &v)$/;"	f	class:Vector
+VectType	Vector.h	/^typedef int VectType;$/;"	t
+Vector	Vector.h	/^    Vector()$/;"	f	class:Vector
+Vector	Vector.h	/^    Vector(const Vector& v)$/;"	f	class:Vector
+Vector	Vector.h	/^class Vector{$/;"	c
+_endCapacity	Vector.h	/^    VectType *_endCapacity;$/;"	m	class:Vector
+_finish	Vector.h	/^    VectType *_finish;$/;"	m	class:Vector
+_start	Vector.h	/^    VectType *_start;$/;"	m	class:Vector
+main	main.cpp	/^int main()$/;"	f
+npos	Vector.h	/^    VectType npos = -1;$/;"	m	class:Vector
+operator =	Vector.h	/^    Vector& operator=(const Vector& v)$/;"	f	class:Vector
+operator []	Vector.h	/^    VectType operator[](size_t index)$/;"	f	class:Vector
+~Vector	Vector.h	/^    ~Vector()$/;"	f	class:Vector
